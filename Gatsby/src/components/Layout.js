@@ -8,23 +8,19 @@
 import React from "react"
 import Footer from "./Footer"
 import Header from "./Header"
-import styled from "styled-components"
 import "normalize.css"
 import GlobalStyles from "../styles/GlobalStyles"
+import { Helmet } from "react-helmet"
 
-const SiteBorderStyles = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-`
 const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyles />
-      <SiteBorderStyles>
-        <Header siteTitle={`Yoga With Marianne`} />
-        <main>{children}</main>
-      </SiteBorderStyles>
-      <Footer />
+      <Helmet>
+      </Helmet>
+      <Header siteTitle={`Yoga With Marianne`}/>
+      <main>{children}</main>
+      {/* <Footer /> */}
     </>
   )
 }
