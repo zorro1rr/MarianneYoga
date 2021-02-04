@@ -19,7 +19,7 @@ const GlobalStyles = createGlobalStyle`
     --tan: #af9560;
   }
   html {
-    font-family: "Sabon", serif;
+    font-family: "Perpetua";
     font-size: 10px;
   }
 

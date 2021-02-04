@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 
-const HeaderStyles = styled.div`
+const HeaderStyles = styled.nav`
   max-width: 1440px;
   margin: 0 auto;
   display: flex;
@@ -18,7 +18,7 @@ const HeaderStyles = styled.div`
     font-size: 2.5rem;
   }
   a {
-    font-family: "Sabon", serif;
+    font-family: "Perpetua", serif;
     text-transform: uppercase;
     text-decoration: none;
     color: var(--darkGrey);
@@ -80,7 +80,7 @@ const HeaderStyles = styled.div`
     h1 {
       display: none;
     }
-    .link-wrapper{
+    .link-wrapper {
       font-size: 1.5rem;
     }
   }
@@ -106,13 +106,13 @@ export default function () {
         </Link>
       </div>
       <div className="link-wrapper">
-        <Link to="/contact" className="hover-7">
-          Contact
+        <Link to="/privates" className="hover-7">
+          Privates
         </Link>
       </div>
       <div className="link-wrapper">
-        <Link to="/privates" className="hover-7">
-          Privates
+        <Link to="/contact" className="hover-7">
+          Contact
         </Link>
       </div>
     </HeaderStyles>

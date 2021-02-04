@@ -1,12 +1,11 @@
 import React from "react"
 import Layout from "../components/layout"
-import Img from "gatsby-image"
+
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-import { FaFacebookSquare, FaTwitterSquare } from "react-icons/fa"
 
-import { TiSocialYoutubeCircular } from "react-icons/ti"
+import Footer from "../components/Footer"
 
 const ContactStyles = styled.div`
   * {
@@ -25,7 +24,7 @@ const ContactStyles = styled.div`
     height: 120vh;
     width: 100%;
   }
-  h2{
+  h2 {
     font-size: 4.5rem;
     color: var(--aqua);
   }
@@ -36,10 +35,10 @@ const ContactStyles = styled.div`
     color: var(--offWhite);
     text-align: center;
   }
-  .formDiv p:last-child{
+  .formDiv p:last-child {
     margin-bottom: 40px;
   }
-  .formDiv h3{
+  .formDiv h3 {
     margin-top: -40px;
   }
   form {
@@ -101,7 +100,7 @@ const HeaderStyles = styled.div`
     font-family: "Gill Sans", sans-serif;
     text-transform: uppercase;
     font-weight: 400;
-    color: var(--orange);
+    color: #ffe2cc;
     margin-left: 5px;
     font-size: 2.5rem;
   }
@@ -109,11 +108,11 @@ const HeaderStyles = styled.div`
     font-family: "Sabon", serif;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--orange);
+    color: #ffe2cc;
   }
   a:visted {
     text-decoration: none;
-    color: var(--orange);
+    color: #ffe2cc;
   }
   div:last-of-type {
     margin-right: 5px;
@@ -131,7 +130,7 @@ const HeaderStyles = styled.div`
       left: 0;
       width: 100%;
       height: 2px;
-      background-color: var(--orange);
+      background-color: #ffe2cc;
       transform: scaleX(0);
       transform-origin: top left;
 
@@ -145,7 +144,7 @@ const HeaderStyles = styled.div`
       right: 0;
       width: 100%;
       height: 2px;
-      background-color: var(--orange);
+      background-color: #ffe2cc;
       transform: scaleX(0);
       transform-origin: bottom right;
 
@@ -175,8 +174,8 @@ const HeaderStyles = styled.div`
 `
 
 const Info = styled.div`
- 
   background: var(--orange);
+  background: linear-gradient(to right, transparent, var(--orange));
   color: #553585;
   color: var(--black);
   display: flex;
@@ -189,11 +188,13 @@ const Info = styled.div`
   }
   h3 {
     color: #553585;
+
     font-size: 3rem;
   }
   p {
     font-size: 1.5rem;
     margin: 1rem 0;
+    font-weight: 600;
   }
   div {
     margin: 0 10px;
@@ -232,13 +233,13 @@ const header = function () {
         </Link>
       </div>
       <div className="link-wrapper">
-        <Link to="/contact" className="hover-7">
-          Contact
+        <Link to="/privates" className="hover-7">
+          Privates
         </Link>
       </div>
       <div className="link-wrapper">
-        <Link to="/privates" className="hover-7">
-          Privates
+        <Link to="/contact" className="hover-7">
+          Contact
         </Link>
       </div>
     </HeaderStyles>
@@ -258,72 +259,41 @@ export default function contact({ data }) {
             <div>
               {/* why do i need this div to get padding?? late night!! */}
               <div className="formText">
-          <h3>Get in Touch</h3>
-            <h2>Contact Marianne</h2>
-            <p>
-              Please fill out the contact form and I will get back to you as
-              soon as possible!
-            </p>
-            </div>
-            <form
-              action="https://getform.io/f/8aa71fe3-e622-4227-9bb4-b5502a4e9b93"
-              method="POST"
-            >
-              <li>
-                <input
-                  className="names"
-                  placeholder="First Name"
-                  type="text"
-                  name="first"
-                />
-                <input
-                  className="names"
-                  placeholder="Last Name"
-                  type="text"
-                  name="last"
-                />
-              </li>
-              <li>
-                <input placeholder="Email" type="email" name="email" />
-                <input placeholder="Phone" type="tel" name="phone" />
-              </li>
-              <textarea placeholder="Message" type="text" name="message" />
-              <button type="submit">Send</button>
-            </form>
+                <h3>Get in Touch</h3>
+                <h2>Contact Marianne</h2>
+                <p>
+                  Please fill out the contact form and I will get back to you as
+                  soon as possible!
+                </p>
+              </div>
+              <form
+                action="https://getform.io/f/8aa71fe3-e622-4227-9bb4-b5502a4e9b93"
+                method="POST"
+              >
+                <li>
+                  <input
+                    className="names"
+                    placeholder="First Name"
+                    type="text"
+                    name="first"
+                  />
+                  <input
+                    className="names"
+                    placeholder="Last Name"
+                    type="text"
+                    name="last"
+                  />
+                </li>
+                <li>
+                  <input placeholder="Email" type="email" name="email" />
+                  <input placeholder="Phone" type="tel" name="phone" />
+                </li>
+                <textarea placeholder="Message" type="text" name="message" />
+                <button type="submit">Send</button>
+              </form>
             </div>
           </ul>
-
-          <Info>
-            <div className="centerWrap">
-              <div className="contactWrap">
-                <h3>Contact</h3>
-                <p>
-                  Marianne Howard
-                  <br />
-                  7277 Via Leonardo
-                  <br />
-                  Lake Worth, FL 33467
-                </p>
-                <Link to="/contact">Contact Marianne</Link>
-              </div>
-              <div className="connectWrap">
-                <h3>Connect</h3>
-                <p>Follow Marianne on social media</p>
-                <a
-                  href="https://www.facebook.com/marianne.howard.378"
-                  target="_blank"
-                >
-                  <FaFacebookSquare />
-                </a>
-                <a>
-                  <TiSocialYoutubeCircular />
-                </a>
-                <a>
-                  <FaTwitterSquare />
-                </a>
-              </div>
-            </div>
-          </Info>
+          <Footer />
         </BackgroundImage>
       </Layout>
     </ContactStyles>
@@ -334,13 +304,8 @@ export const query = graphql`
   query {
     file(relativePath: { eq: "ContactPurp.png" }) {
       childImageSharp {
-        fluid(quality: 90, maxWidth: 1920) {
-          base64
-          tracedSVG
-          aspectRatio
-          srcWebp
-          srcSetWebp
-          originalName
+        fluid(quality: 100, maxWidth: 1920) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

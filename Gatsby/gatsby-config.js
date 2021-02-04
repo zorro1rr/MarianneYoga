@@ -39,11 +39,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Gill Sans`, "Sabon", "Lato"],
+        fonts: [`Gill Sans`, "Sabon", "Lato", "Perpetua"],
         display: "swap",
       },
     },
-//delete this and get rid of gatsby-remark-embed-video dependancy/files
+    //delete this and get rid of gatsby-remark-embed-video dependancy/files
 
     // {
     //   resolve: `gatsby-source-filesystem`,

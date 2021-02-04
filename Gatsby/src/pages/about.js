@@ -2,10 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Img from "gatsby-image"
-import { graphql } from "gatsby"
+import { Link, graphql } from "gatsby"
+import { TiSocialYoutubeCircular } from "react-icons/ti"
+import { FaFacebookSquare, FaTwitterSquare } from "react-icons/fa"
 import BackgroundImage from "gatsby-background-image"
 
-const Wrapper = styled.div`
+const AboutStyles = styled.div`
   font-family: sabon, serif;
   #deskHead {
     background: var(--yellow);
@@ -24,18 +26,17 @@ const Wrapper = styled.div`
     font-size: clamp(3.5rem, 5vw, 6rem);
     font-weight: 400;
     min-width: 230px;
-    margin-right: 30vw;;
+    margin-right: 30vw;
   }
-  
+
   @media (max-width: 1050px) {
-    h2{
+    h2 {
       margin-right: 15vw;
     }
-    
   }
 
   @media (max-width: 750px) {
-    h2{
+    h2 {
       margin: 0;
       min-width: 0;
     }
@@ -53,29 +54,43 @@ const Wrapper = styled.div`
     }
   }
 `
-
-const BorderWrapper = styled.div`
-  max-width: 1240px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 50% 50%;
-  grid-column-gap: 20px;
-  grid-row-gap: 10px;
-  text-align: center;
+const FooterStyles = styled.div`
+  background: linear-gradient(to left, transparent, var(--yellow));
+  color: #553585;
   color: var(--black);
-  .image {
-    margin: 20px 0 10px;
-    height: 450px;
-    width: 600px;
-    background: var(--grey);
+  padding-bottom: 1rem;
+  .BG {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
   }
-
+  .centerWrap {
+    max-width: 750px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+  }
+  h3 {
+    color: #553585;
+    font-size: 3rem;
+  }
   p {
-    font-family: lato, sans-serif;
+    font-size: 1.5rem;
+    margin: 1rem 0;
   }
-  #immy {
-    height: 450px;
+  div {
+    margin: 0 10px;
+  }
+  a {
+    color: #553585;
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--p);
+    text-decoration: none;
+  }
+  @media (max-width: 750px) {
+    flex-direction: column;
   }
 `
 
@@ -83,77 +98,73 @@ export default function about({ data }) {
   console.log(data)
   return (
     <Layout>
-      <Wrapper>
+      <AboutStyles>
         <div id="mobileHead">
           <h2>My Journey</h2>
         </div>
         <div id="deskHead">
-          <Img fixed={data.lotus.childImageSharp.fixed} tag="lotus"></Img>
+          <BackgroundImage
+            fixed={data.headerLotus.childImageSharp.fixed}
+            tag="lotus"
+          />
           <h2>My Journey</h2>
         </div>
-        
+
         <div>
           {/* <Img id="header" fixed={data.lotus.childImageSharp.fixed} /> */}
         </div>
+      </AboutStyles>
 
-        <BorderWrapper>
-          {/* <img id="immy" src={placeholder} src="placeholder" />
-          <div className="content1">
-            <h3>Lorem Ipsum</h3>
+      <FooterStyles>
+        <div className="BG">
+          <Img fixed={data.footerLotus.childImageSharp.fixed} className="BG" />
+        </div>
+        <div className="centerWrap">
+          <div>
+            <h3>Contact</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              libero magna, commodo sagittis urna vel, pretium sollicitudin
-              tortor. Aliquam nec elit in odio varius congue. Etiam ultricies
-              leo ac est posuere venenatis. Mauris fringilla et diam in laoreet.
-              Praesent non ex sapien. Vivamus viverra porta ex ac blandit.
-              Praesent vitae egestas ligula. Nulla pretium eget nibh a dictum.
-              Nullam porta lectus sit amet est congue, eu dapibus ante
-              ullamcorper. Sed egestas neque et lorem rhoncus, vitae fermentum
-              elit aliquet. Integer a egestas mi. In bibendum lacus quis cursus
-              eleifend.
+              Marianne Howard
+              <br />
+              7277 Via Leonardo
+              <br />
+              Lake Worth, FL 33467
             </p>
-            <p>
-              laoreet. Praesent non ex sapien. Vivamus viverra porta ex ac
-              blandit. Praesent vitae egestas ligula. Nulla pretium eget nibh a
-              dictum. Nullam porta lectus sit amet est congue, eu dapibus ante
-              ullamcorper. Sed egestas neque et lorem rhoncus, vitae fermentum
-              elit aliquet. Integer a egestas mi. In bibendum lacus quis cursus
-              eleifend.
-            </p>
+            <Link to="/contact">Contact Marianne</Link>
           </div>
-
-          <div className="content2">
-            {" "}
-            <h3>Lorem Ipsum</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-              libero magna, commodo sagittis urna vel, pretium sollicitudin
-              tortor. Aliquam nec elit in odio varius congue. Etiam ultricies
-              leo ac est posuere venenatis. Mauris fringilla et diam in laoreet.
-              Praesent non ex sapien. Vivamus viverra porta ex ac blandit.
-              Praesent vitae egestas ligula. Nulla pretium eget nibh a dictum.
-              Nullam porta lectus sit amet est congue, eu dapibus ante
-              ullamcorper. Sed egestas neque et lorem rhoncus, vitae fermentum
-              elit aliquet. Integer a egestas mi. In bibendum lacus quis cursus
-              eleifend.
-            </p>
-            <p>
-              Sed egestas neque et lorem rhoncus, vitae fermentum elit aliquet.
-              Integer a egestas mi. In bibendum lacus quis cursus eleifend.
-            </p>
+          <div>
+            <h3>Connect</h3>
+            <p>Follow Marianne on social media</p>
+            <a
+              href="https://www.facebook.com/marianne.howard.378"
+              target="_blank"
+            >
+              <FaFacebookSquare />
+            </a>
+            <a>
+              <TiSocialYoutubeCircular />
+            </a>
+            <a>
+              <FaTwitterSquare />
+            </a>
           </div>
-          <img id="immy" src="../images/placeholder.svg" src="placeholder" /> */}
-        </BorderWrapper>
-      </Wrapper>
+        </div>
+      </FooterStyles>
     </Layout>
   )
 }
 
 export const query = graphql`
   query {
-    lotus: file(relativePath: { eq: "lotus2.png" }) {
+    headerLotus: file(id: { eq: "c4402fe0-5a72-5b3c-a21c-4efee4da33aa" }) {
       childImageSharp {
         fixed(width: 400, height: 240) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    footerLotus: file(id: { eq: "6f9560b7-f4c0-5fc0-b22e-92c9eb97c240" }) {
+      childImageSharp {
+        fixed {
           ...GatsbyImageSharpFixed
         }
       }
