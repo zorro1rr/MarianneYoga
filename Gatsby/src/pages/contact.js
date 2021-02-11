@@ -1,6 +1,5 @@
 import React from "react"
-import Layout from "../components/layout"
-
+import Layout from "../components/Layout"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"

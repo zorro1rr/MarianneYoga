@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 import React from "react"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import { Helmet } from "react-helmet"
 import styled from "styled-components"
 import Img from "gatsby-image"

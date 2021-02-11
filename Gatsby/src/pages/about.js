@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Img from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import { TiSocialYoutubeCircular } from "react-icons/ti"
