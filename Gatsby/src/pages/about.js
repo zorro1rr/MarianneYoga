@@ -226,7 +226,7 @@ export default function about({ data }) {
           <h2>My Journey</h2>
         </div>
         <div id="deskHead">
-          <Img fixed={data.headerLotus.childImageSharp.fixed} tag="lotus" />
+          <Img fixed={data.file.childImageSharp.fixed} tag="lotus" />
           <h2>My Journey</h2>
         </div>
       </HeaderStyles>
@@ -328,7 +328,7 @@ export default function about({ data }) {
 
 export const query = graphql`
   query {
-    headerLotus: file(id: { eq: "c4402fe0-5a72-5b3c-a21c-4efee4da33aa" }) {
+    file(id: { eq: "c4402fe0-5a72-5b3c-a21c-4efee4da33aa" }) {
       childImageSharp {
         fixed(width: 400, height: 240) {
           ...GatsbyImageSharpFixed
