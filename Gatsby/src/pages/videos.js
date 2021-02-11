@@ -179,14 +179,14 @@ export const query = graphql`
         id
       }
     }
-    lotusRight: file(id: { eq: "6749bdea-b9cd-5662-8d89-5732dd8ec0d6" }) {
+    lotusRight: file(relativePath: { eq: "videos/lotusRight.png" }) {
       childImageSharp {
         fixed {
           ...GatsbyImageSharpFixed
         }
       }
     }
-    lotusBig: file(id: { eq: "8242c1dc-0eab-56bc-a40f-f90bda3f9870" }) {
+    lotusBig: file(relativePath: { eq: "videos/lotusBig.png" }) {
       childImageSharp {
         fixed {
           ...GatsbyImageSharpFixed

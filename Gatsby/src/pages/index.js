@@ -216,28 +216,28 @@ export const query = graphql`
       name
       href
     }
-    headerImg: file(id: { eq: "8d094fac-a3d0-590d-9967-07ee27407b0d" }) {
+    headerImg: file(relativePath: { eq: "home/Yogi-16.jpg" }) {
       image: childImageSharp {
         fluid(maxWidth: 1620, maxHeight: 587, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    img1: file(id: { eq: "f7d9ffca-2da9-5323-baad-cb407d3655c9" }) {
+    img1: file(relativePath: { eq: "home/Yogi-35.jpg" }) {
       image: childImageSharp {
         fluid(maxWidth: 650, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    Bg1: file(id: { eq: "1da6b482-1d66-5696-836a-dfaad7c79c65" }) {
+    Bg1: file(relativePath: { eq: "home/Bg1.png" }) {
       image: childImageSharp {
         fluid(maxWidth: 1240, quality: 90) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    Bg2: file(id: { eq: "bdb2564f-4b44-5915-9012-e3fee731ea4b" }) {
+    Bg2: file(relativePath: { eq: "home/Bg2.png" }) {
       image: childImageSharp {
         fluid(maxWidth: 980, quality: 90) {
           ...GatsbyImageSharpFluid

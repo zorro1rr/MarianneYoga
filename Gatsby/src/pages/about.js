@@ -328,35 +328,35 @@ export default function about({ data }) {
 
 export const query = graphql`
   query {
-    file(id: { eq: "c4402fe0-5a72-5b3c-a21c-4efee4da33aa" }) {
+    file(relativePath: { eq: "about/lotus2.png" }) {
       childImageSharp {
         fixed(width: 400, height: 240) {
           ...GatsbyImageSharpFixed
         }
       }
     }
-    footerLotus: file(id: { eq: "6f9560b7-f4c0-5fc0-b22e-92c9eb97c240" }) {
+    footerLotus: file(relativePath: { eq: "about/LotusBottom.png" }) {
       childImageSharp {
         fixed {
           ...GatsbyImageSharpFixed
         }
       }
     }
-    pilates: file(id: { eq: "9ab6490f-72bf-57b9-944b-a6245898ffdc" }) {
+    pilates: file(relativePath: { eq: "about/Yogi-8.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 648, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    pose: file(id: { eq: "f9600b21-61c7-5b03-ab8c-c38c0f9b36cd" }) {
+    pose: file(relativePath: { eq: "about/Yogi-30.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 360, quality: 100) {
           ...GatsbyImageSharpFluid
         }
       }
     }
-    split: file(id: { eq: "d7302677-d5f6-55ae-bda9-a85a6625d267" }) {
+    split: file(relativePath: { eq: "about/Yogi-15.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 648, quality: 100) {
           ...GatsbyImageSharpFluid
