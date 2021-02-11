@@ -4,98 +4,17 @@ import Layout from "../components/layout"
 import styled from "styled-components"
 import { graphql, Link } from "gatsby"
 import BackgroundImage from "gatsby-background-image"
-
+import SEO from "../components/seo"
 import Footer from "../components/Footer"
 
-const ContactStyles = styled.div`
-  * {
-    /* border: 1px solid red; */
-  }
-
-  overflow-x: hidden;
-  // get rid of header in layout
-  #header {
-    display: none;
-  }
-  .bg {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 120vh;
-    width: 100%;
-  }
-  h2 {
-    font-size: 4.5rem;
-    color: var(--aqua);
-  }
-  .formDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--offWhite);
-    text-align: center;
-  }
-  .formDiv p:last-child {
-    margin-bottom: 40px;
-  }
-  .formDiv h3 {
-    margin-top: -40px;
-  }
-  form {
-    width: 750px;
-  }
-  .formDiv input {
-    margin: 7px 0;
-    width: 48%;
-  }
-
-  textarea {
-    margin: 7px 0;
-    min-height: 150px;
-  }
-
-  button {
-    width: 50%;
-    align-self: center;
-  }
-  li {
-    display: flex;
-    justify-content: space-between;
-    list-style-type: none;
-  }
-  .connect {
-    background: var(--orange);
-    text-align: center;
-  }
-  button {
-    color: var(--darkGrey);
-    background: var(--orange);
-    font-weight: 700;
-    border: 0;
-    padding: 0.6rem 1rem;
-    border-radius: 2px;
-  }
-  button:hover {
-    transform: translate3d(0, -1px, 0);
-    --cast: 0;
-    box-shadow: none;
-    background-color: #d6baf3;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  }
-
-  form {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-  }
-`
 const HeaderStyles = styled.div`
-  max-width: 1440px;
-  margin: 0 auto;
+  width: 98vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 118px;
+  text-shadow: 0 2px 3px #4b4362;
+
   h1 {
     font-family: "Gill Sans", sans-serif;
     text-transform: uppercase;
@@ -133,7 +52,6 @@ const HeaderStyles = styled.div`
       background-color: #ffe2cc;
       transform: scaleX(0);
       transform-origin: top left;
-
       transition: transform 0.3s;
     }
 
@@ -147,7 +65,6 @@ const HeaderStyles = styled.div`
       background-color: #ffe2cc;
       transform: scaleX(0);
       transform-origin: bottom right;
-
       transition: transform 0.3s;
     }
 
@@ -168,131 +85,192 @@ const HeaderStyles = styled.div`
       display: none;
     }
     .link-wrapper {
-      font-size: 1.5rem;
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 400px) {
+    margin-top: 10px;
+    flex-direction: column;
+    height: 200px;
+  }
+`
+
+const ContactStyles = styled.div`
+  #header {
+    display: none;
+  }
+  .bg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 120vh;
+    width: 100%;
+  }
+  h2 {
+    display: inline-block;
+    font-size: 4.5rem;
+    color: #ffe2cc;
+    border-bottom: 1px solid #ffe2cc;
+    text-shadow: 0 2px 3px #4b4362;
+  }
+  h3 {
+    text-shadow: 0 2px 3px #4b4362;
+    color: var(--offWhite);
+  }
+  p {
+    color: var(--offWhite);
+    text-shadow: 0 2px 3px #4b4362;
+  }
+  .wrapper {
+    box-sizing: border-box;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .inputDiv {
+    margin: 0 5px;
+    display: grid;
+    grid-gap: 7px;
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
+    grid-template-rows: 1fr 1fr;
+  }
+
+  input {
+    max-width: 90vw;
+    margin: 7px 7px;
+    border: none;
+    box-shadow: 0 2px 3px #4b4362;
+  }
+
+  textarea {
+    width: 98%;
+    max-width: 90vw;
+    align-self: center;
+    margin: 7px;
+    min-height: 150px;
+    box-shadow: 0 2px 3px #4b4362;
+  }
+
+  .connect {
+    background: var(--orange);
+    text-align: center;
+  }
+  button {
+    width: 50%;
+    align-self: center;
+    color: var(--darkGrey);
+    background: var(--orange);
+    font-weight: 700;
+    border: 0;
+    padding: 0.6rem 1rem;
+    border-radius: 2px;
+    box-shadow: 0 2px 3px #4b4362;
+  }
+  button:hover {
+    transform: translate3d(0, -1px, 0);
+    --cast: 0;
+    box-shadow: none;
+    background-color: #d6baf3;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  @media (max-width: 580px) {
+    .wrapper {
+      width: 95vw;
+      margin: 0;
+    }
+    .bg {
+      height: 100%;
     }
   }
 `
 
-const Info = styled.div`
-  background: var(--orange);
-  background: linear-gradient(to right, transparent, var(--orange));
-  color: #553585;
-  color: var(--black);
-  display: flex;
-  justify-content: center;
-  padding-bottom: 1rem;
-  .centerWrap {
-    width: 750px;
-    display: flex;
-    justify-content: space-around;
-  }
-  h3 {
-    color: #553585;
-
-    font-size: 3rem;
-  }
-  p {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    font-weight: 600;
-  }
-  div {
-    margin: 0 10px;
-  }
-  a {
-    color: #553585;
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--p);
-    text-decoration: none;
-  }
-  @media (max-width: 750px) {
-    flex-direction: column;
-  }
-`
-
 //custom header to blend into BG
-const header = function () {
-  return (
-    <HeaderStyles>
+const header = (
+  <HeaderStyles>
+    <Link to="/">
       <h1>Yoga With Marianne</h1>
-      <div className="link-wrapper">
-        <Link to="/" className="hover-7">
-          Home
-        </Link>
-      </div>
-      <div className="link-wrapper">
-        <Link to="/about" className="hover-7">
-          About
-        </Link>
-      </div>
-      <div className="link-wrapper">
-        <Link to="/videos" className="hover-7">
-          Videos
-        </Link>
-      </div>
-      <div className="link-wrapper">
-        <Link to="/privates" className="hover-7">
-          Privates
-        </Link>
-      </div>
-      <div className="link-wrapper">
-        <Link to="/contact" className="hover-7">
-          Contact
-        </Link>
-      </div>
-    </HeaderStyles>
-  )
-}
+    </Link>
+    <div className="link-wrapper">
+      <Link to="/" className="hover-7">
+        Home
+      </Link>
+    </div>
+    <div className="link-wrapper">
+      <Link to="/about" className="hover-7">
+        About
+      </Link>
+    </div>
+    <div className="link-wrapper">
+      <Link to="/videos" className="hover-7">
+        Videos
+      </Link>
+    </div>
+    <div className="link-wrapper">
+      <Link to="/privates" className="hover-7">
+        Privates
+      </Link>
+    </div>
+    <div className="link-wrapper">
+      <Link to="/contact" className="hover-7">
+        Contact
+      </Link>
+    </div>
+  </HeaderStyles>
+)
 
 export default function contact({ data }) {
   const background = data.file.childImageSharp.fluid
+  const seo = data.allSanitySeo.nodes[0]
 
   return (
     <ContactStyles>
+      <SEO seo={seo} />
       <Layout>
         <BackgroundImage fluid={background} className="bg">
-          <div>{header()}</div>
+          {header}
 
-          <ul className="formDiv">
-            <div>
-              {/* why do i need this div to get padding?? late night!! */}
-              <div className="formText">
-                <h3>Get in Touch</h3>
-                <h2>Contact Marianne</h2>
-                <p>
-                  Please fill out the contact form and I will get back to you as
-                  soon as possible!
-                </p>
-              </div>
-              <form
-                action="https://getform.io/f/8aa71fe3-e622-4227-9bb4-b5502a4e9b93"
-                method="POST"
-              >
-                <li>
-                  <input
-                    className="names"
-                    placeholder="First Name"
-                    type="text"
-                    name="first"
-                  />
-                  <input
-                    className="names"
-                    placeholder="Last Name"
-                    type="text"
-                    name="last"
-                  />
-                </li>
-                <li>
-                  <input placeholder="Email" type="email" name="email" />
-                  <input placeholder="Phone" type="tel" name="phone" />
-                </li>
-                <textarea placeholder="Message" type="text" name="message" />
-                <button type="submit">Send</button>
-              </form>
+          <div className="wrapper">
+            <div className="formText">
+              <h3>Get in Touch</h3>
+              <h2>Contact Marianne</h2>
+              <p>
+                Please fill out the contact form and I will get back to you as
+                soon as possible!
+              </p>
             </div>
-          </ul>
+            <form
+              action="https://getform.io/f/8e8371ea-d293-4d88-9912-42c569e0fa94"
+              method="POST"
+            >
+              <div className="inputDiv">
+                <input
+                  className="names"
+                  placeholder="First Name"
+                  type="text"
+                  name="first"
+                />
+                <input
+                  className="names"
+                  placeholder="Last Name"
+                  type="text"
+                  name="last"
+                />
+
+                <input placeholder="Email" type="email" name="email" />
+                <input placeholder="Phone" type="tel" name="phone" />
+              </div>
+              <textarea placeholder="Message" type="text" name="message" />
+              <button type="submit">Send</button>
+            </form>
+          </div>
+
           <Footer />
         </BackgroundImage>
       </Layout>
@@ -306,6 +284,33 @@ export const query = graphql`
       childImageSharp {
         fluid(quality: 100, maxWidth: 1920) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allSanitySeo(filter: { page: { eq: "contact" } }) {
+      nodes {
+        title
+        description
+        ogUrl
+        ogType
+        ogSiteName
+        ogTitle
+        ogDescription
+        ogImageUrl {
+          asset {
+            url
+          }
+        }
+        ogImageType
+        ogImageWidth
+        ogImageHeight
+        twitterTitle
+        twitterSite
+        twitterCreator
+        twitterImage {
+          asset {
+            url
+          }
         }
       }
     }

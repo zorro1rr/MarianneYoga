@@ -41,6 +41,8 @@ const GlobalStyles = createGlobalStyle`
   body::-webkit-scrollbar {
     width: 12px;
   }
+
+
   html {
     scrollbar-width: thin;
     scrollbar-color: var(--grey) var(--white);
@@ -49,13 +51,14 @@ const GlobalStyles = createGlobalStyle`
     background: var(--white);
   }
   body::-webkit-scrollbar-thumb {
-    background-color: var(--darkGrey) ;
+    background-color: #553585;
     border-radius: 6px;
     border: 1px solid var(--white);
   }
 
  p{
    font-family: Lato, sans-serif;
+   color: var(--black);
  }
 
   img {

@@ -6,9 +6,11 @@ import { Link, graphql } from "gatsby"
 import { TiSocialYoutubeCircular } from "react-icons/ti"
 import { FaFacebookSquare, FaTwitterSquare } from "react-icons/fa"
 import BackgroundImage from "gatsby-background-image"
+import SEO from "../components/seo"
 
-const AboutStyles = styled.div`
+const HeaderStyles = styled.header`
   font-family: sabon, serif;
+  box-shadow: 0 2px 3px #ccc;
   #deskHead {
     background: var(--yellow);
     height: 240px;
@@ -27,6 +29,7 @@ const AboutStyles = styled.div`
     font-weight: 400;
     min-width: 230px;
     margin-right: 30vw;
+    text-shadow: 0 2px 3px #eee;
   }
 
   @media (max-width: 1050px) {
@@ -54,15 +57,115 @@ const AboutStyles = styled.div`
     }
   }
 `
-const FooterStyles = styled.div`
+
+const ContentStyles = styled.div`
+  max-width: 1290px;
+  margin: 0 auto;
+  .img1 {
+    box-shadow: 0 2px 3px #ccc;
+  }
+  .img2 {
+    box-shadow: 0 2px 3px #ccc;
+  }
+  .topContent {
+    display: flex;
+    justify-content: space-around;
+    height: 700px;
+    background: #f7efe5;
+    margin-bottom: 100px;
+    box-shadow: 0 2px 3px #ccc;
+  }
+  h2 {
+    color: var(--black);
+    font-family: "Gill Sans", sans-serif;
+    padding: 20px 0 75px 50px;
+    text-shadow: 0 2px 3px #eee;
+  }
+  .leftContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 648px;
+    margin-left: 10px;
+    justify-content: space-around;
+    min-width: 300px;
+  }
+
+  .rightContent {
+    max-width: 360px;
+    margin: -90px 10px 0 10px;
+    min-width: 300px;
+  }
+
+  .bottomContent {
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 70px;
+  }
+  .bottomContent > p {
+    max-width: 350px;
+    margin-left: 200px;
+    margin-right: 10px;
+    align-self: center;
+  }
+  .img3 {
+    width: 648px;
+    box-shadow: 0 2px 3px #ccc;
+  }
+  @media (max-width: 900px) {
+    .img3 {
+      min-width: 320px;
+      height: 316px;
+    }
+    .bottomContent > p {
+      margin-top: 0;
+    }
+  }
+  @media (max-width: 780px) {
+    .bottomContent > p {
+      margin-left: 10px;
+      text-align: center;
+    }
+    .bottomContent {
+      flex-direction: column;
+    }
+    .img3 {
+      width: 315px;
+      align-self: center;
+    }
+  }
+  @media (max-width: 650px) {
+    .topContent {
+      flex-direction: column;
+      height: auto;
+      text-align: center;
+      align-items: center;
+    }
+    .leftContent {
+      margin-right: 10px;
+    }
+    .rightContent {
+      margin-top: 10px;
+    }
+    h2 {
+      padding: 20px 0;
+      text-align: center;
+    }
+  }
+`
+
+const FooterStyles = styled.footer`
   background: linear-gradient(to left, transparent, var(--yellow));
   color: #553585;
   color: var(--black);
   padding-bottom: 1rem;
+
   .BG {
+    font-size: 0;
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: -1090px;
+    left: 0px;
+    margin: 0;
+    z-index: -1;
   }
   .centerWrap {
     max-width: 750px;
@@ -73,9 +176,10 @@ const FooterStyles = styled.div`
   h3 {
     color: #553585;
     font-size: 3rem;
+    text-shadow: 0 2px 3px #9a9a9a;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 16px;
     margin: 1rem 0;
   }
   div {
@@ -89,16 +193,35 @@ const FooterStyles = styled.div`
     color: var(--p);
     text-decoration: none;
   }
-  @media (max-width: 750px) {
-    flex-direction: column;
+
+  @media (max-width: 1500px) {
+    .BG {
+      left: -150px;
+    }
+  }
+  @media (max-width: 1220px) {
+    .BG {
+      bottom: -1000px;
+    }
+  }
+  @media (max-width: 1050px) {
+    .BG {
+      bottom: -970px;
+    }
+  }
+  @media (max-width: 780px) {
+    .BG {
+      display: none;
+    }
   }
 `
 
 export default function about({ data }) {
-  console.log(data)
+  const seo = data.allSanitySeo.nodes[0]
   return (
     <Layout>
-      <AboutStyles>
+      <SEO seo={seo} />
+      <HeaderStyles>
         <div id="mobileHead">
           <h2>My Journey</h2>
         </div>
@@ -109,16 +232,57 @@ export default function about({ data }) {
           />
           <h2>My Journey</h2>
         </div>
-
-        <div>
-          {/* <Img id="header" fixed={data.lotus.childImageSharp.fixed} /> */}
+      </HeaderStyles>
+      <ContentStyles>
+        <h2>Thank you for following your inspiration to come here!</h2>
+        <div className="topContent">
+          <div className="leftContent">
+            <p>
+              Hello everyone! I'm Marianne Howard - a senior with a passion for
+              fitness who loves to inspire others to feel good through the
+              medicine of movement. In 1978 I graduated with Cum Laude from
+              Unversity of Ohio with a degree in Physical Education. I have
+              enjoyed teaching Yoga, Pilates, balance and cardio classes at
+              numerous gyms and private communities for over 20 years.
+            </p>
+            <Img
+              className="img1"
+              fluid={data.pilates.childImageSharp.fluid}
+              alt=""
+            />
+          </div>
+          <div className="rightContent">
+            <Img
+              className="img2"
+              fluid={data.pose.childImageSharp.fluid}
+              alt=""
+            />
+            <p>
+              Although I have experience teaching all ages and experience
+              levels, I have a special affection for helping my fellow seniors
+              achieve a healthly lifestyle!
+            </p>
+          </div>
         </div>
-      </AboutStyles>
+        <div className="bottomContent">
+          <p>
+            Many of my classes include chair fitness with weights, bands, and
+            balls. Also, I have guided many meditation classes to help develop
+            both mental and spiritual well being. I would love to develop a
+            personalized "magical mix" to your needs to help you live a heathier
+            and happier life.We will discuss your interests and create a
+            personalized program just for you! Please do not hesitate to give me
+            the opportunity to answer any of your questions.
+          </p>
 
+          <Img
+            fluid={data.split.childImageSharp.fluid}
+            alt=""
+            className="img3"
+          />
+        </div>
+      </ContentStyles>
       <FooterStyles>
-        <div className="BG">
-          <Img fixed={data.footerLotus.childImageSharp.fixed} className="BG" />
-        </div>
         <div className="centerWrap">
           <div>
             <h3>Contact</h3>
@@ -137,16 +301,28 @@ export default function about({ data }) {
             <a
               href="https://www.facebook.com/marianne.howard.378"
               target="_blank"
+              rel="noreferrer"
             >
               <FaFacebookSquare />
             </a>
-            <a>
+            <a
+              href="https://www.youtube.com/channel/UCLfjTtL-yF94YKvfk1yDETg"
+              target="_blank"
+              rel="noreferrer"
+            >
               <TiSocialYoutubeCircular />
             </a>
-            <a>
+            <a
+              href="https://twitter.com/with_marianne"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaTwitterSquare />
             </a>
           </div>
+        </div>
+        <div className="BG">
+          <Img fixed={data.footerLotus.childImageSharp.fixed} />
         </div>
       </FooterStyles>
     </Layout>
@@ -166,6 +342,54 @@ export const query = graphql`
       childImageSharp {
         fixed {
           ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    pilates: file(id: { eq: "9ab6490f-72bf-57b9-944b-a6245898ffdc" }) {
+      childImageSharp {
+        fluid(maxWidth: 648, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    pose: file(id: { eq: "f9600b21-61c7-5b03-ab8c-c38c0f9b36cd" }) {
+      childImageSharp {
+        fluid(maxWidth: 360, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    split: file(id: { eq: "d7302677-d5f6-55ae-bda9-a85a6625d267" }) {
+      childImageSharp {
+        fluid(maxWidth: 648, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allSanitySeo(filter: { page: { eq: "about" } }) {
+      nodes {
+        title
+        description
+        ogUrl
+        ogType
+        ogSiteName
+        ogTitle
+        ogDescription
+        ogImageUrl {
+          asset {
+            url
+          }
+        }
+        ogImageType
+        ogImageWidth
+        ogImageHeight
+        twitterTitle
+        twitterSite
+        twitterCreator
+        twitterImage {
+          asset {
+            url
+          }
         }
       }
     }

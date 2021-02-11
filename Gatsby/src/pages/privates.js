@@ -1,10 +1,10 @@
-import { Helmet } from "react-helmet"
 import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
 import Footer from "../components/Footer"
+import SEO from "../components/seo"
 
 const PrivateStyles = styled.div`
   color: var(--black);
@@ -18,9 +18,11 @@ const PrivateStyles = styled.div`
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
+    box-shadow: 0 2px 3px #ccc;
   }
   #mobileHead {
     display: none;
+    box-shadow: 0 2px 3px #ccc;
   }
   .corner {
     margin-top: -160px;
@@ -28,8 +30,8 @@ const PrivateStyles = styled.div`
   }
 
   h2 {
-    color: #dc8f58;
-    /* color: #fbcaa0; */
+    color: #fac59c;
+    text-shadow: 0 2px 3px #919191;
     font-size: 4rem;
     font-size: clamp(3.5rem, 5vw, 6rem);
     font-weight: 400;
@@ -41,6 +43,9 @@ const PrivateStyles = styled.div`
   }
   .textBox {
     max-width: 600px;
+  }
+  .img1 {
+    box-shadow: 0 2px 3px #ccc;
   }
 
   .content {
@@ -55,7 +60,7 @@ const PrivateStyles = styled.div`
     padding-left: 10px;
   }
   h3 {
-    font-family: "Gill Sans";
+    font-family: "Gill Sans", sans-serif;
     font-size: 35px;
     font-weight: 400;
     margin-bottom: 7px;
@@ -71,7 +76,6 @@ const PrivateStyles = styled.div`
     text-align: center;
     display: flex;
     justify-content: space-between;
-    /* width: 800px; */
     box-shadow: 0 2px 3px #ccc;
     border: 1px solid #eee;
     padding: 8px 15px 7px 15px;
@@ -82,15 +86,22 @@ const PrivateStyles = styled.div`
     padding-right: 20px;
   }
   h4 {
-    font-family: "Perpetua";
-    margin-top: 0;
+    font-size: 30px;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
   }
   h5 {
+    font-size: 20px;
     font-family: "Perpetua";
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
-  h5 + p {
-    padding-top: 30px;
-  }
+
   .myButton {
     justify-self: end;
     box-shadow: 0px 1px 0px 0px #fff6af;
@@ -109,6 +120,7 @@ const PrivateStyles = styled.div`
     text-decoration: none;
     text-shadow: 0px 1px 0px #ffee66;
     width: 150px;
+    box-shadow: 0 2px 3px #ccc;
   }
   .myButton:hover {
     background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
@@ -117,6 +129,13 @@ const PrivateStyles = styled.div`
   .myButton:active {
     position: relative;
     top: 1px;
+  }
+  .mobileMap {
+    display: none;
+    box-shadow: 0 2px 3px #ccc;
+  }
+  .desktopMap {
+    box-shadow: 0 2px 3px #ccc;
   }
   @media (max-width: 1050px) {
     .content {
@@ -162,48 +181,31 @@ const PrivateStyles = styled.div`
       flex-direction: column;
     }
   }
-`
-
-const Info = styled.div`
-  background: linear-gradient(to right, transparent, var(--orange));
-  color: #553585;
-  color: var(--black);
-  padding-bottom: 1rem;
-  .centerWrap {
-    max-width: 750px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
+  @media (max-width: 450px) {
+    .mainContent {
+      width: 360px;
+    }
+    .desktopMap {
+      display: none;
+    }
+    .mobileMap {
+      display: initial;
+    }
   }
-  h3 {
-    color: #553585;
-    font-size: 3rem;
-    margin-bottom: 7px;
-  }
-  p {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-  }
-  div {
-    margin: 0 10px;
-  }
-  a {
-    color: #553585;
-    text-decoration: none;
-  }
-  a:hover {
-    color: var(--p);
-    text-decoration: none;
-  }
-  @media (max-width: 750px) {
-    flex-direction: column;
+  @media (max-width: 375px) {
+    .mainContent {
+      width: 320px;
+    }
+    .mobileH3 {
+      font-size: 33px;
+      text-align: center;
+    }
   }
 `
 
 export default function privates({ data }) {
-  console.log(data)
+  const seo = data.allSanitySeo.nodes[0]
   const headerImages = data.header.edges
-  const zoom = data.zoom.childImageSharp.fixed
 
   const clickHandler = () => {
     window.open(
@@ -215,7 +217,7 @@ export default function privates({ data }) {
 
   return (
     <Layout>
-      <Helmet></Helmet>
+      <SEO seo={seo} />
       <PrivateStyles>
         <div id="mobileHead">
           <h2>Yoga Privates</h2>
@@ -223,27 +225,27 @@ export default function privates({ data }) {
         <div id="deskHead">
           <Img
             className="corner"
-            fixed={headerImages[0].node.childImageSharp.fixed}
+            fixed={headerImages[1].node.childImageSharp.fixed}
           ></Img>
 
           <div className="textBox">
-            <h2>Private Classes</h2>
+            <h2>Private Lessons</h2>
           </div>
 
-          <Img fixed={headerImages[1].node.childImageSharp.fixed}></Img>
+          <Img fixed={headerImages[0].node.childImageSharp.fixed}></Img>
         </div>
         <div className="content">
           <div className="contentLeft">
             <h3>Yoga / Pilates / Fitness</h3>
-            <Img fixed={zoom} />
+            <Img className="img1" fixed={data.zoom.childImageSharp.fixed} />
           </div>
           <div>
             <h3 className="mobileH3">Yoga / Pilates / Fitness</h3>
             <div className="mainContent">
               <div>
                 <h4>
-                  Marianne is avaliable for both in-person as well as virtual
-                  privates through Zoom.
+                  Marianne is avaliable for both in-person <br /> & <br />
+                  COVID-19 Safe virtual private lessons via Zoom.
                 </h4>
                 <h5>
                   Join her for a personalized workout curtailed around your
@@ -268,6 +270,17 @@ export default function privates({ data }) {
                 allowFullScreen=""
                 aria-hidden="false"
                 title="googleMap"
+                className="desktopMap"
+              ></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d57100.47780339854!2d-80.11424369805309!3d26.55933901991087!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7669821d5baa9c9b!2sYoga%20With%20Marianne!5e0!3m2!1sen!2sus!4v1605995160514!5m2!1sen!2sus"
+                width="320"
+                height="320"
+                frameBorder="0"
+                allowFullScreen=""
+                aria-hidden="false"
+                title="googleMap"
+                className="mobileMap"
               ></iframe>
             </div>
           </div>
@@ -305,6 +318,33 @@ export const query = graphql`
       childImageSharp {
         fixed(width: 350) {
           ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    allSanitySeo(filter: { page: { eq: "privates" } }) {
+      nodes {
+        title
+        description
+        ogUrl
+        ogType
+        ogSiteName
+        ogTitle
+        ogDescription
+        ogImageUrl {
+          asset {
+            url
+          }
+        }
+        ogImageType
+        ogImageWidth
+        ogImageHeight
+        twitterTitle
+        twitterSite
+        twitterCreator
+        twitterImage {
+          asset {
+            url
+          }
         }
       }
     }

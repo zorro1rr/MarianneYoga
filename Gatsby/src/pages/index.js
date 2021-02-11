@@ -5,84 +5,203 @@ import styled from "styled-components"
 import Img from "gatsby-image"
 import { graphql } from "gatsby"
 import Footer from "../components/Footer"
+import BackgroundImage from "gatsby-background-image"
 
 const HeaderDiv = styled.header`
-  height: 587px;
   .hero {
-    height: 100%;
+    min-height: 587px;
+    width: 100%;
   }
+  box-shadow: 0 2px 3px #ccc;
 `
 
 const TopContent = styled.div`
-  .topBackground {
-    height: 650px;
-    background: #f7efe5;
-  }
-  .topGrid {
+  .Bg1 {
     max-width: 1240px;
     height: 650px;
     margin: 0 auto;
+    height: 625px;
     display: grid;
-    grid-template-columns: 25% 1fr;
-    grid-template-rows: 10% 2fr 1fr;
-    grid-gap: 50px;
+    grid-template-columns: 40% 1fr;
+    grid-template-rows: 49% 10% 1fr;
+    grid-gap: 20px;
+    box-shadow: 0 2px 3px #ccc;
+  }
+
+  .textContent {
+    justify-self: center;
+    max-width: 350px;
+    margin-left: 20px;
   }
   .img1 {
-    grid-row-start: 1;
-    grid-column-start: 2;
+    max-width: 648px;
+    height: 438px;
+    box-shadow: 0 2px 3px #ccc;
   }
-  .img1 {
-    grid-row-start: 0;
-    grid-column-start: 2;
-  }
-  p {
-    margin: 0;
+  h2 {
+    color: #553585;
+    font-size: 34px;
   }
   .p2 {
-    grid-row-start: 3;
-    grid-column-start: 0;
+    grid-row-start: 2;
+    justify-self: center;
+    max-width: 350px;
+    margin-left: 20px;
+  }
+  @media (max-width: 790px) {
+    .p2 {
+      grid-column-start: 2;
+      grid-row-start: 3;
+      margin-top: 40px;
+    }
+  }
+  @media (max-width: 440px) {
+    h2 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 17px;
+    }
   }
 `
 
 const BottomContent = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 600px;
+
+  .Bg2 {
+    display: flex;
+    width: 980px;
+    margin: 0 auto;
+    height: 450px;
+    overflow: hidden;
+    align-items: center;
+    box-shadow: 0 2px 3px #ccc;
+  }
+  .videoWrapper {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    width: 560px;
+    height: 100%;
+    padding: 20px;
+  }
+
+  .videoDiv {
+    border: solid 7px var(--offWhite);
+    box-shadow: 0 2px 3px #ccc;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: auto;
+    padding-top: 56.25%;
+  }
+  .responsive-iframe {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .videoText {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    align-self: start;
+  }
+
+  h3 {
+    color: #553585;
+    font-size: 30px;
+    border-bottom: 2px solid #553585;
+  }
+  h4 {
+    color: #553585;
+    font-size: 23px;
+  }
+  p {
+  }
+
+  @media (max-width: 500px) {
+    .Bg2 {
+      height: 300px;
+      /* flex-direction: column; */
+    }
+
+    h3 {
+      font-size: 25px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
 `
 
 const IndexPage = ({ data }) => {
-  console.log(data)
+  const video = data.sanityVideos
+  const seo = data.allSanitySeo.nodes[0]
   return (
     <>
-      <SEO title="Home" />
+      <SEO seo={seo} />
       <HeaderDiv>
-        <Img classname="hero" fixed={data.headerImg.image.fixed}></Img>
+        <Img classname="hero" fluid={data.headerImg.image.fluid}></Img>
       </HeaderDiv>
       <Layout>
         <TopContent>
-          <div className="topBackground">
-            <div className="topGrid">
-              <h2>Lorem Ipsum</h2>
+          <BackgroundImage className="Bg1" fluid={data.Bg1.image.fluid}>
+            <div className="textContent">
+              <h2>
+                It's not about being good at something... It's about being good
+                to yourself!
+              </h2>
               <p>
-                Maecenas nisi sem, luctus quis eleifend non, molestie sit amet
-                tellus. Aenean nunc mauris, feugiat hendrerit eleifend non,
-                suscipit quis dui. Praesent eu lorem est. Cras dapibus turpis
-                vel massa bibendum fermentum. Curabitur ut odio tempus,
-                consectetur mauris vel, venenatis mauris. Pellentesque nibh
-                orci, laoreet a mollis at, semper tristique felis. Donec
-                pellentesque est eget laoreet fringilla. In rhoncus id ipsum
-                quis congue.
+                Yoga, meditation and fitness are the tools we have been given to
+                build and maintain our earthly bodies. Our physical and mental
+                well-being are intrinsically connected.
               </p>
-              <p className="p2">
-                Pellentesque quis enim efficitur neque rhoncus bibendum at sed
-                orci. Praesent non aliquet turpis. Vivamus pellentesque odio eu
-                blandit pellentesque. Maecenas ac elit massa.
-              </p>
-
-              <Img className="img1" fixed={data.img1.image.fixed}></Img>
             </div>
-          </div>
-          <BottomContent></BottomContent>
-          <Footer></Footer>
+            <p className="p2">
+              Over the last 20 plus years I have studied these mediums of health
+              and well-being and I would like to invite you to my practice!
+            </p>
+
+            <Img className="img1" fluid={data.img1.image.fluid} />
+          </BackgroundImage>
         </TopContent>
+
+        <BottomContent>
+          <BackgroundImage className="Bg2" fluid={data.Bg2.image.fluid}>
+            <div className="videoWrapper">
+              <div className="videoDiv">
+                <iframe
+                  className="responsive-iframe"
+                  src={video.href}
+                  height="315"
+                  width="560"
+                  frameBorder="0"
+                  title={video.name}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+            <div className="videoText">
+              <h3>Featured Video</h3>
+              <h4>{video.name}</h4>
+              <p>{video.description}</p>
+            </div>
+          </BackgroundImage>
+        </BottomContent>
+        <Footer></Footer>
       </Layout>
     </>
   )
@@ -91,17 +210,64 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 export const query = graphql`
   query {
-    headerImg: file(id: { eq: "ebc63a2e-3014-59c4-a514-a32efaba28d8" }) {
+    sanityVideos {
+      description
+      id
+      name
+      href
+    }
+    headerImg: file(id: { eq: "8d094fac-a3d0-590d-9967-07ee27407b0d" }) {
       image: childImageSharp {
-        fixed(width: 1620, height: 587, quality: 100) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 1620, maxHeight: 587, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
     img1: file(id: { eq: "f7d9ffca-2da9-5323-baad-cb407d3655c9" }) {
       image: childImageSharp {
-        fixed(width: 650, height: 450, quality: 100) {
-          ...GatsbyImageSharpFixed
+        fluid(maxWidth: 650, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    Bg1: file(id: { eq: "1da6b482-1d66-5696-836a-dfaad7c79c65" }) {
+      image: childImageSharp {
+        fluid(maxWidth: 1240, quality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    Bg2: file(id: { eq: "bdb2564f-4b44-5915-9012-e3fee731ea4b" }) {
+      image: childImageSharp {
+        fluid(maxWidth: 980, quality: 90) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allSanitySeo(filter: { page: { eq: "index" } }) {
+      nodes {
+        title
+        description
+        ogUrl
+        ogType
+        ogSiteName
+        ogTitle
+        ogDescription
+        ogImageUrl {
+          asset {
+            url
+          }
+        }
+        ogImageType
+        ogImageWidth
+        ogImageHeight
+        twitterTitle
+        twitterSite
+        twitterCreator
+        twitterImage {
+          asset {
+            url
+          }
         }
       }
     }

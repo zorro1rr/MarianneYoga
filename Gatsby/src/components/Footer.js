@@ -18,9 +18,10 @@ const FooterStyles = styled.footer`
   h3 {
     color: #553585;
     font-size: 3rem;
+    text-shadow: 0 2px 3px #9a9a9a;
   }
   p {
-    font-size: 1.5rem;
+    font-size: 16px;
     margin: 1rem 0;
   }
   div {
@@ -60,13 +61,22 @@ export default function Footer() {
           <a
             href="https://www.facebook.com/marianne.howard.378"
             target="_blank"
+            rel="noreferrer"
           >
             <FaFacebookSquare />
           </a>
-          <a>
+          <a
+            href="https://www.youtube.com/channel/UCLfjTtL-yF94YKvfk1yDETg"
+            target="_blank"
+            rel="noreferrer"
+          >
             <TiSocialYoutubeCircular />
           </a>
-          <a>
+          <a
+            href="https://twitter.com/with_marianne"
+            target="_blank"
+            rel="noreferrer"
+          >
             <FaTwitterSquare />
           </a>
         </div>

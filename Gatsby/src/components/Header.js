@@ -81,15 +81,22 @@ const HeaderStyles = styled.nav`
       display: none;
     }
     .link-wrapper {
-      font-size: 1.5rem;
+      font-size: 16px;
     }
+  }
+  @media (max-width: 400px) {
+    flex-direction: column;
+    height: 200px;
   }
 `
 
 export default function () {
   return (
     <HeaderStyles id="header">
-      <h1>Yoga With Marianne</h1>
+      <Link to="/">
+        <h1>Yoga With Marianne</h1>
+      </Link>
+
       <div className="link-wrapper">
         <Link to="/" className="hover-7">
           Home
