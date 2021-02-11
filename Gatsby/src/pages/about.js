@@ -5,7 +5,6 @@ import Img from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import { TiSocialYoutubeCircular } from "react-icons/ti"
 import { FaFacebookSquare, FaTwitterSquare } from "react-icons/fa"
-import BackgroundImage from "gatsby-background-image"
 import SEO from "../components/seo"
 
 const HeaderStyles = styled.header`
@@ -218,6 +217,7 @@ const FooterStyles = styled.footer`
 
 export default function about({ data }) {
   const seo = data.allSanitySeo.nodes[0]
+  console.log(data)
   return (
     <Layout>
       <SEO seo={seo} />
@@ -226,10 +226,7 @@ export default function about({ data }) {
           <h2>My Journey</h2>
         </div>
         <div id="deskHead">
-          <BackgroundImage
-            fixed={data.headerLotus.childImageSharp.fixed}
-            tag="lotus"
-          />
+          <Img fixed={data.headerLotus.childImageSharp.fixed} tag="lotus" />
           <h2>My Journey</h2>
         </div>
       </HeaderStyles>
