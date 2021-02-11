@@ -115,8 +115,8 @@ const VideoStyles = styled.div`
 `
 
 export default function videos({ data }) {
+  console.log(data)
   const videos = data.allSanityVideos.nodes
-  const images = data.headerImgs.nodes
   const seo = data.allSanitySeo.nodes[0]
 
   return (
@@ -130,11 +130,17 @@ export default function videos({ data }) {
           <h2>Video Classes</h2>
         </div>
         <div className="deskHead">
-          <Img fixed={images[1].image.fixed} className="headerImg1" />
+          <Img
+            fixed={data.lotusBig.childImageSharp.fixed}
+            className="headerImg1"
+          />
           <div className="textBox">
             <h2>Video Classes</h2>
           </div>
-          <Img fixed={images[0].image.fixed} className="headerImg2" />
+          <Img
+            fixed={data.lotusRight.childImageSharp.fixed}
+            className="headerImg2"
+          />
         </div>
         <div className="content">
           {videos.map(video => (
@@ -173,15 +179,21 @@ export const query = graphql`
         id
       }
     }
-    headerImgs: allFile(filter: { relativeDirectory: { eq: "videos" } }) {
-      nodes {
-        image: childImageSharp {
-          fixed {
-            ...GatsbyImageSharpFixed
-          }
+    lotusRight: file(id: { eq: "6749bdea-b9cd-5662-8d89-5732dd8ec0d6" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
         }
       }
     }
+    lotusBig: file(id: { eq: "8242c1dc-0eab-56bc-a40f-f90bda3f9870" }) {
+      childImageSharp {
+        fixed {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+
     allSanitySeo(filter: { page: { eq: "videos" } }) {
       nodes {
         title
