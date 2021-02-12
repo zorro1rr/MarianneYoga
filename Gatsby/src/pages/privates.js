@@ -39,7 +39,7 @@ const PrivateStyles = styled.div`
   }
   p {
     font-family: lato;
-    font-size: 13px;
+    font-size: 16px;
   }
   .textBox {
     max-width: 600px;
@@ -71,7 +71,7 @@ const PrivateStyles = styled.div`
   }
   .mainContent {
     box-sizing: border-box;
-    margin: 82px 10px 0 10px;
+    margin: 69px 10px 0 10px;
     align-items: center;
     text-align: center;
     display: flex;

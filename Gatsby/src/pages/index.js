@@ -160,8 +160,9 @@ const IndexPage = ({ data }) => {
           <BackgroundImage className="Bg1" fluid={data.Bg1.image.fluid}>
             <div className="textContent">
               <h2>
-                It's not about being good at something... It's about being good
-                to yourself!
+                It's not about being good at something...
+                <br />
+                It's about being good to yourself!
               </h2>
               <p>
                 Yoga, meditation and fitness are the tools we have been given to
