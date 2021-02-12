@@ -238,9 +238,9 @@ export default function about({ data }) {
               Hello everyone! I'm Marianne Howard - a senior with a passion for
               fitness who loves to inspire others to feel good through the
               medicine of movement. In 1978 I graduated Cum Laude from The
-              University of Ohio with a degree in Physical Education. I am also
-              a certified Yoga and Pilates instructor, have enjoyed teaching at
-              numerous gyms and private communities for over 20 years.
+              University of Ohio with a degree in Physical Education. I'm also a
+              certified Yoga and Pilates instructor, and have enjoyed teaching
+              at numerous gyms and private communities for over 20 years.
             </p>
             <Img
               className="img1"
