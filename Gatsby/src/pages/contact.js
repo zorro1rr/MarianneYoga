@@ -240,34 +240,33 @@ export default function contact({ data }) {
               <h3>Get in Touch</h3>
               <h2>Contact Marianne</h2>
               <p>
-                Please fill out the contact form and I will get back to you as
-                soon as possible!
+                Contact Form Temporarily Down.
               </p>
             </div>
-            <form
-              action="https://getform.io/f/8e8371ea-d293-4d88-9912-42c569e0fa94"
-              method="POST"
-            >
-              <div className="inputDiv">
-                <input
-                  className="names"
-                  placeholder="First Name"
-                  type="text"
-                  name="first"
-                />
-                <input
-                  className="names"
-                  placeholder="Last Name"
-                  type="text"
-                  name="last"
-                />
+//             <form
+//               action="https://getform.io/f/8e8371ea-d293-4d88-9912-42c569e0fa94"
+//               method="POST"
+//             >
+//               <div className="inputDiv">
+//                 <input
+//                   className="names"
+//                   placeholder="First Name"
+//                   type="text"
+//                   name="first"
+//                 />
+//                 <input
+//                   className="names"
+//                   placeholder="Last Name"
+//                   type="text"
+//                   name="last"
+//                 />
 
-                <input placeholder="Email" type="email" name="email" />
-                <input placeholder="Phone" type="tel" name="phone" />
-              </div>
-              <textarea placeholder="Message" type="text" name="message" />
-              <button type="submit">Send</button>
-            </form>
+//                 <input placeholder="Email" type="email" name="email" />
+//                 <input placeholder="Phone" type="tel" name="phone" />
+//               </div>
+//               <textarea placeholder="Message" type="text" name="message" />
+//               <button type="submit">Send</button>
+//             </form>
           </div>
 
           <Footer />
